@@ -130,3 +130,5 @@ model_1_0.predict(xn1_1)
 ![](img/4.JPG)
 
 ## RESULT
+
+Thus a neural network regression model for the given dataset is written and executed successfully.
