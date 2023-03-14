@@ -1,4 +1,4 @@
-# Developing a Neural Network Regression Model
+# <p align="center">Developing a Neural Network Regression Model</p>
 
 ## AIM
 
@@ -13,122 +13,134 @@ Regression helps in establishing a relationship between a dependent variable and
 Build your training and test set from the dataset, here we are making the neural network 3 hidden layer with activation layer as relu and with their nodes in them. Now we will fit our dataset and then predict the value.
 
 ## Neural Network Model
-
-![](img/0.svg)
+<p align="center">
+    <img width="495" alt="image" src="https://user-images.githubusercontent.com/93427237/224899406-37813c26-2ce9-435d-8260-b1c09cdc04b2.png">
+</p>
 
 ## DESIGN STEPS
 
-#### STEP 1:
+### STEP 1:
 
 Loading the dataset
 
-#### STEP 2:
+### STEP 2:
 
 Split the dataset into training and testing
 
-#### STEP 3:
+### STEP 3:
 
-Create MinMaxScalar objects ,fit the model and transform the data.
+Create MinMaxScalar object, fit the model and transform the data.
 
-#### STEP 4:
+### STEP 4:
 
 Build the Neural Network Model and compile the model.
 
-#### STEP 5:
+### STEP 5:
 
 Train the model with the training data.
 
-#### STEP 6:
+### STEP 6:
 
 Plot the performance plot
 
-#### STEP 7:
+### STEP 7:
 
 Evaluate the model with the testing data.
 
 ## PROGRAM
 
-~~~python
-### To Read CSV file from Google Drive :
+```py
+### Importing Modules
 from google.colab import auth
 import gspread
 from google.auth import default
-import pandas as pd
 
-### Authenticate User:
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+
+from tensorflow.keras.models import Sequential as Seq
+from tensorflow.keras.layers import Dense as Den
+from tensorflow.keras.metrics import RootMeanSquaredError as rmse
+
+### Authenticate &  Create Dataframe using Data in Sheets
 auth.authenticate_user()
 creds, _ = default()
 gc = gspread.authorize(creds)
 
-### Open the Google Sheet and convert into DataFrame :
-worksheet = gc.open('Dataset 1.0').sheet1
-rows = worksheet.get_all_values()
+sheet = gc.open('Multiple').sheet1 
+rows = sheet.get_all_values()
+
 df = pd.DataFrame(rows[1:], columns=rows[0])
-df = df.astype({'Input':'float'})
-df = df.astype({'Output':'float'})
-df.head()
+df = df.astype({'Table':'int'})
+df = df.astype({'Product':'int'})
 
-### Import the packages :
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+### Assign X and Y values
+x = df[["Table"]] .values
+y = df[["Product"]].values
+```
+### Normalize the values & Split the data
+scaler = MinMaxScaler()
+scaler.fit(x)
+x_n = scaler.fit_transform(x)
 
-x=df[['Input']].values
-y=df[['Output']].values
+x_train,x_test,y_train,y_test = train_test_split(x_n,y,test_size = 0.3,random_state = 3)
 
-x
-y
-
-### Split Training and testing set :
-xtrain,xtest,ytrain,ytest=train_test_split(x,y,test_size=0.3,random_state=1)
-
-### Pre-processing the data :
-scaler=MinMaxScaler()
-scaler.fit(xtrain)
-
-xtrain1=scaler.transform(xtrain)
-
-### Model :
-model_1_0=Sequential([
-    Dense(8,activation='relu'),
-    Dense(10,activation='relu'),
-    Dense(4,activation='relu'),
-    Dense(1)
+### Create a Neural Network & Train it
+ai = Seq([
+    Den(8,activation = 'relu',input_shape=[1]),
+    Den(15,activation = 'relu'),
+    Den(1),
 ])
 
-### Loss plot :
-model_1_0.compile(optimizer='rmsprop',loss='mse')
-model_1_0.fit(xtrain1,ytrain,epochs=5000)
-loss=pd.DataFrame(model_1_0.history.history)
-loss.plot()
+ai.compile(optimizer = 'rmsprop',loss = 'mse')
 
-### Testing with the test data and predicting the output :
-xtest1=scaler.transform(xtest)
-model_1_0.evaluate(xtest1,ytest)
-xn1=[[4]]
-xn1_1=scaler.transform(xn1)
-model_1_0.predict(xn1_1)
-~~~
+ai.fit(x_train,y_train,epochs=2000)
+ai.fit(x_train,y_train,epochs=2000)
 
-### Dataset Information
+### Plot the Loss
+loss_plot = pd.DataFrame(ai.history.history)
+loss_plot.plot()
 
-![](img/1.JPG)
+### Evaluate the model
+err = rmse()
+preds = ai.predict(x_test)
+err(y_test,preds)
+
+### Predict for some value
+x_n1 = [[30]]
+x_n_n = scaler.transform(x_n1)
+ai.predict(x_n_n)
+
+## Dataset Information
+
+<p align="center">
+    <img width="250" alt="image" src="https://user-images.githubusercontent.com/93427237/224900167-4850f8cd-8e8f-4b05-9017-7bc064dd87e5.png">
+</p>
+
 
 ## OUTPUT
 
-#### Training Loss Vs Iteration Plot
+### Training Loss Vs Iteration Plot
 
-![](img/2.JPG)
+<p align="center">
+    <img width="415" alt="image" src="https://user-images.githubusercontent.com/93427237/224899902-d1919bfc-48fd-4a4d-bb48-aada12a86204.png">
+    </br>
+    <img width="415" alt="image" src="https://user-images.githubusercontent.com/93427237/224900030-645bbe10-8926-47b7-bfac-a5a12e5f1aec.png">
+</p>
 
-#### Test Data Root Mean Squared Error
+### Test Data Root Mean Squared Error
 
-![](img/3.JPG)
+<p align="center">
+    <img width="415" alt="image" src="https://user-images.githubusercontent.com/93427237/224899617-fcfc866f-11a7-4dfe-ab76-35cb9384c62f.png">
+</p>
 
-#### New Sample Data Prediction
+### New Sample Data Prediction
 
-![](img/4.JPG)
+<p align="center">
+    <img width="415" alt="image" src="https://user-images.githubusercontent.com/93427237/224899728-a9db6cb4-72bd-46e5-b5c4-e6b751a33393.png">
+</p>
 
 ## RESULT
-
-Thus a neural network regression model for the given dataset is written and executed successfully.
+Thus a neural network regression model for the given dataset is written and executed successfully
