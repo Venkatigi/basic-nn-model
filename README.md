@@ -109,20 +109,20 @@ model_1_0.predict(xn1_1)
 
 ### Dataset Information
 
-Include screenshot of the dataset
+![](img/1.JPG)
 
 ## OUTPUT
 
 #### Training Loss Vs Iteration Plot
 
-Include your plot here
+![](img/2.JPG)
 
 #### Test Data Root Mean Squared Error
 
-Find the test data root mean squared error
+![](img/3.JPG)
 
 #### New Sample Data Prediction
 
-Include your sample input and output here
+![](img/4.JPG)
 
 ## RESULT
