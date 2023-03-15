@@ -79,7 +79,7 @@ df = df.astype({'Product':'int'})
 ### Assign X and Y values
 x = df[["Table"]] .values
 y = df[["Product"]].values
-```
+
 ### Normalize the values & Split the data
 scaler = MinMaxScaler()
 scaler.fit(x)
@@ -112,7 +112,7 @@ err(y_test,preds)
 x_n1 = [[30]]
 x_n_n = scaler.transform(x_n1)
 ai.predict(x_n_n)
-
+```
 ## Dataset Information
 
 <p align="center">
