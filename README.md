@@ -13,8 +13,9 @@ Regression helps in establishing a relationship between a dependent variable and
 Build your training and test set from the dataset, here we are making the neural network 3 hidden layer with activation layer as relu and with their nodes in them. Now we will fit our dataset and then predict the value.
 
 ## Neural Network Model
+
 <p align="center">
-    <img width="495" alt="image" src="https://user-images.githubusercontent.com/93427237/224899406-37813c26-2ce9-435d-8260-b1c09cdc04b2.png">
+    <img width="250" alt="image" src="https://user-images.githubusercontent.com/94154252/226111563-e2e31dcd-08f7-4c64-9af7-0a0004fe8b07.JPG">
 </p>
 
 ## DESIGN STEPS
@@ -116,7 +117,7 @@ ai.predict(x_n_n)
 ## Dataset Information
 
 <p align="center">
-    <img width="250" alt="image" src="https://user-images.githubusercontent.com/93427237/224900167-4850f8cd-8e8f-4b05-9017-7bc064dd87e5.png">
+    <img width="250" alt="image" src="https://user-images.githubusercontent.com/94154252/226111684-4f168eae-28a7-47cb-bf6e-add24d738e74.JPG">
 </p>
 
 
@@ -125,22 +126,21 @@ ai.predict(x_n_n)
 ### Training Loss Vs Iteration Plot
 
 <p align="center">
-    <img width="415" alt="image" src="https://user-images.githubusercontent.com/93427237/224899902-d1919bfc-48fd-4a4d-bb48-aada12a86204.png">
-    </br>
-    <img width="415" alt="image" src="https://user-images.githubusercontent.com/93427237/224900030-645bbe10-8926-47b7-bfac-a5a12e5f1aec.png">
+    <img width="415" alt="image" src="https://user-images.githubusercontent.com/94154252/226111753-4e7ace33-735d-434e-9c31-b13fb9cbcc99.JPG">
 </p>
 
 ### Test Data Root Mean Squared Error
 
 <p align="center">
-    <img width="415" alt="image" src="https://user-images.githubusercontent.com/93427237/224899617-fcfc866f-11a7-4dfe-ab76-35cb9384c62f.png">
+    <img width="415" alt="image" src="https://user-images.githubusercontent.com/94154252/226111778-e417f8cd-6cf9-4713-adf7-6eb73b906810.JPG">
 </p>
 
 ### New Sample Data Prediction
 
 <p align="center">
-    <img width="415" alt="image" src="https://user-images.githubusercontent.com/93427237/224899728-a9db6cb4-72bd-46e5-b5c4-e6b751a33393.png">
+    <img width="415" alt="image" src="https://user-images.githubusercontent.com/94154252/226111794-4a9a98b4-d8b8-456b-bdbc-be4ea78abae8.JPG">
 </p>
+
 
 ## RESULT
 Thus a neural network regression model for the given dataset is written and executed successfully
